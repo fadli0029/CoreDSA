@@ -1,3 +1,0 @@
-/home/fade0329/leetcode/core/LinkedList/build/CMakeFiles/LinkedList_exe.dir
-/home/fade0329/leetcode/core/LinkedList/build/CMakeFiles/edit_cache.dir
-/home/fade0329/leetcode/core/LinkedList/build/CMakeFiles/rebuild_cache.dir
