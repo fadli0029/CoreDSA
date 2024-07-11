@@ -16,11 +16,10 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Set up CMake
-      uses: lukka/get-cmake@v2
-
     - name: Install dependencies
-      run: sudo apt-get update && sudo apt-get install -y g++ catch2
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake g++ catch2
 
     - name: Build
       run: |
