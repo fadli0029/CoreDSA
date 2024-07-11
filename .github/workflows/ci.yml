@@ -19,7 +19,14 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y cmake g++ catch2
+        sudo apt-get install -y cmake g++ gcc
+
+    - name: Install Catch2
+      run: |
+        git clone https://github.com/catchorg/Catch2.git
+        cd Catch2
+        cmake -B build -S . -DBUILD_TESTING=OFF
+        sudo cmake --build build/ --target install
 
     - name: Build
       run: |
@@ -34,4 +41,3 @@ jobs:
         cd data_structures
         cd build
         ctest --output-on-failure
-
