@@ -12,7 +12,7 @@ find_package(Catch2 3 REQUIRED)
 # Add LinkedList
 add_executable(LinkedList_exe LinkedList/main.cpp LinkedList/linkedlist.h)
 target_include_directories(LinkedList_exe PUBLIC ${Catch2_INCLUDE_DIRS})
-target_link_libraries(LinkedList_exe Catch2::Catch2)
+target_link_libraries(LinkedList_exe Catch2::Catch2WithMain)
 add_test(NAME LinkedListTest COMMAND LinkedList_exe)
 
 
