@@ -31,6 +31,7 @@ jobs:
     - name: Build
       run: |
         pwd
+        ls
         cd data_structures
         mkdir build
         cd build
