@@ -27,11 +27,10 @@ jobs:
         cd Catch2
         cmake -B build -S . -DBUILD_TESTING=OFF
         sudo cmake --build build/ --target install
+        sudo cmake --install build
 
     - name: Build
       run: |
-        pwd
-        ls
         cd data_structures
         mkdir build
         cd build
@@ -40,6 +39,5 @@ jobs:
 
     - name: Run tests
       run: |
-        cd data_structures
-        cd build
+        cd data_structures/build
         ctest --output-on-failure
