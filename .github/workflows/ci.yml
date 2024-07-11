@@ -23,15 +23,13 @@ jobs:
 
     - name: Install Catch2
       run: |
-        echo ${{runner.workspace}}
-        cd ${{runner.workspace}}
-        ls
-        cd
         git clone https://github.com/catchorg/Catch2.git
         cd Catch2
-        cmake -B build -S . -DBUILD_TESTING=OFF
-        sudo cmake --build build/ --target install
-        sudo cmake --install build
+        git checkout "v3.4.0"
+        mkdir build && cd build
+        cmake .. -DBUILD_TESTING=Off
+        make -j $(nproc)
+        sudo make install
 
     - name: Build
       run: |
