@@ -30,6 +30,7 @@ jobs:
 
     - name: Build
       run: |
+        pwd
         cd data_structures
         mkdir build
         cd build
