@@ -23,6 +23,8 @@ jobs:
 
     - name: Install Catch2
       run: |
+        echo ${{runner.workspace}}
+        echo $GITHUB_WORKSPACE
         git clone https://github.com/catchorg/Catch2.git
         cd Catch2
         cmake -B build -S . -DBUILD_TESTING=OFF
