@@ -235,4 +235,4 @@ class LinkedList
     unsigned int n_nodes;
 };
 
-#endif // end linkedlist.h definition
+#endif // end of linkedlist.h definition

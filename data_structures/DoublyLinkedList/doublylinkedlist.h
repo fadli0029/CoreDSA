@@ -324,4 +324,4 @@ class DoublyLinkedList
     unsigned int n_nodes;
 };
 
-#endif // end doublylinkedlist.h definition
+#endif // end of doublylinkedlist.h definition
