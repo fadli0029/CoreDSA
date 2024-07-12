@@ -89,14 +89,13 @@ class LinkedList
      * @return The pointer to the new node.
      */
     node_ptr push_front(const T& data) {
-      node_ptr new_node = new Node(data);
+      node_ptr new_node = new Node(data, this->head);
       if (this->head == nullptr) {
         // linked list is empty.
         this->head = new_node;
       }
       else {
         // replace current head with the new one.
-        new_node->next = this->head;
         this->head = new_node;
       }
       this->n_nodes++;

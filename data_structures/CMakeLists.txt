@@ -15,6 +15,12 @@ target_include_directories(LinkedList_exe PUBLIC ${Catch2_INCLUDE_DIRS})
 target_link_libraries(LinkedList_exe Catch2::Catch2WithMain)
 add_test(NAME LinkedListTest COMMAND LinkedList_exe)
 
+# Add LinkedList
+add_executable(DoublyLinkedList_exe DoublyLinkedList/main.cpp DoublyLinkedList/doublylinkedlist.h)
+target_include_directories(DoublyLinkedList_exe PUBLIC ${Catch2_INCLUDE_DIRS})
+target_link_libraries(DoublyLinkedList_exe Catch2::Catch2WithMain)
+add_test(NAME DoublyLinkedListTest COMMAND DoublyLinkedList_exe)
+
 
 # Add Stack
 # ...
