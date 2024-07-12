@@ -1,8 +1,7 @@
 /* ==============================================================================
    This is an implementation of the Depth First Search (DFS) algorithm using a
-   stack explicitly. The graph can be represented as either an adjacency list or
-   as an adjacency matrix. It then prints the visited nodes in the order they are
-   visited.
+   stack explicitly. The implementation assumes the starting node to be `0` by
+   default. It then prints the visited nodes in the order they are visited.
 
    @param n: the number of vertices in the graph
    @param adj_mat:  the adjacency matrix representation of the graph
