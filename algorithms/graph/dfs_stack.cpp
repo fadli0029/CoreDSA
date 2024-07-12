@@ -65,7 +65,7 @@ void dfs(int n, std::vector<int> adj_list[]) {
     if (!visited[node]) {
       record.push_back(node);
       visited[node] = true;
-      for (auto const& neighbor : adj_list[node]) {
+      for (const auto& neighbor : adj_list[node]) {
         if (!visited[neighbor]) {
           st.push(neighbor);
         }
