@@ -13,7 +13,10 @@ find_package(Catch2 3 REQUIRED)
 add_executable(dfs_stack_exe graph/dfs_stack.cpp)
 target_include_directories(dfs_stack_exe PUBLIC ${Catch2_INCLUDE_DIRS})
 target_link_libraries(dfs_stack_exe Catch2::Catch2WithMain)
-add_test(NAME DFSTest COMMAND dfs_stack_exe)
+add_test(NAME DFSStackTest COMMAND dfs_stack_exe)
 
-# Add dfs_recursion
-# ...
+# Add bfs
+add_executable(bfs_exe graph/bfs.cpp)
+target_include_directories(bfs_exe PUBLIC ${Catch2_INCLUDE_DIRS})
+target_link_libraries(bfs_exe Catch2::Catch2WithMain)
+add_test(NAME BFSTest COMMAND bfs_exe)
