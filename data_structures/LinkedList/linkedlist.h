@@ -132,7 +132,7 @@ class LinkedList
      * @brief Get the number of nodes in the list.
      * @return The number of nodes in the list.
      */
-    int size() {
+    unsigned int size() {
       return this->n_nodes;
     }
 
@@ -232,7 +232,7 @@ class LinkedList
 
   private:
     node_ptr head;
-    int n_nodes;
+    unsigned int n_nodes;
 };
 
 #endif // end linkedlist.h definition

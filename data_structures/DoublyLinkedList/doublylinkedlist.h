@@ -195,7 +195,7 @@ class DoublyLinkedList
      * @brief Get the number of nodes in the list.
      * @return The number of nodes in the list.
      */
-    int size() {
+    unsigned int size() {
       return this->n_nodes;
     }
 
@@ -321,7 +321,7 @@ class DoublyLinkedList
   private:
     node_ptr head;
     node_ptr tail;
-    int n_nodes;
+    unsigned int n_nodes;
 };
 
 #endif // end doublylinkedlist.h definition
