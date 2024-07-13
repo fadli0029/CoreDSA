@@ -1,5 +1,5 @@
-/* ==============================================================================
-   This is an implementation of the Depth First Search (DFS) algorithm using a
+/* ====================================================================================
+   This file contains implementations of the Depth First Search (DFS) algorithm using a
    stack explicitly and using recursion (recursion is using stack implicitly
    by nature of a function call). The implementation assumes the starting node
    to be `0` by default. It then prints the visited nodes in the order they
@@ -11,7 +11,7 @@
    @param adj_list: the adjacency list representation of the graph
 
    @author: Muhammad Fadli Alim Arsani
-===============================================================================*/
+=====================================================================================*/
 
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch_test_macros.hpp>
