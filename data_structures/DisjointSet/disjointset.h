@@ -6,18 +6,56 @@
    @author: Muhammad Fadli Alim Arsani
 ===============================================================================*/
 
-// TODO:
-// - if user optionally passes a graph in the constructor of DisjointSet, then
-//   the disjoint set will be initialized with the content of the graph, meaning
-//   it will create the vertices and union them as described in the graph. The
-//   accepted representation of the graph input is either an adjacency list or
-//   an adjacency matrix.
-// - for user convenience, the disjoint set will also have a map that tracks,
-//   the corresponding node given data. This way, user can call union/find on the
-//   data directly, without having to know the node representation.
-// - although it is obvious, by definition of a set, duplicate data is not allowed.
-
 #ifndef DISJOINTSET_H
 #define DISJOINTSET_H
+
+#include <vector>
+
+class DisjointSet {
+  public:
+    DisjointSet(int size) {
+      root.resize(size);
+      rank.resize(size);
+
+      for (int i=0; i<size; i++) {
+        root[i] = i;
+        rank[i] = 1;
+      }
+    }
+
+    int find(int i) {
+      if (i == root[i]) {
+        return i;
+      }
+
+      return root[i] = find(root[i]);
+    }
+
+    void merge(int i, int j) {
+      int root_i = find(i);
+      int root_j = find(j);
+
+      if (root_i != root_j) {
+        if (rank[root_i] > rank[root_j]) {
+          root[root_j] = root_i;
+        }
+        else if (rank[root_i] < rank[root_j]) {
+          root[root_i] = root_j;
+        }
+        else {
+          root[root_j] = root_i;
+          rank[root_i]++;
+        }
+      }
+    }
+
+    bool connected(int i, int j) {
+      return find(i) == find(j);
+    }
+
+  private:
+    std::vector<int> root;
+    std::vector<int> rank;
+};
 
 #endif // end of disjointset.h definition
