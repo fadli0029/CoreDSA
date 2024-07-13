@@ -13,7 +13,7 @@ find_package(Catch2 3 REQUIRED)
 add_executable(dfs_exe graph/dfs.cpp)
 target_include_directories(dfs_exe PUBLIC ${Catch2_INCLUDE_DIRS})
 target_link_libraries(dfs_exe Catch2::Catch2WithMain)
-add_test(NAME DFSStackTest COMMAND dfs_exe)
+add_test(NAME DFSTest COMMAND dfs_exe)
 
 # Add bfs
 add_executable(bfs_exe graph/bfs.cpp)

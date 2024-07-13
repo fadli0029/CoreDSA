@@ -32,13 +32,14 @@ void dfs(int n, std::vector<std::vector<int>>& adj_mat) {
   while (!st.empty()) {
     int node = st.top();
     st.pop();
+
     if (!visited[node]) {
-      record.push_back(node);
       visited[node] = true;
+
+      record.push_back(node);
+
       for (int i=0; i<n; i++) {
-        if (adj_mat[node][i] && !visited[i]) {
-          st.push(i);
-        }
+        if (adj_mat[node][i] && !visited[i]) st.push(i);
       }
     }
   }
@@ -70,13 +71,14 @@ void dfs(int n, std::vector<int> adj_list[]) {
   while (!st.empty()) {
     int node = st.top();
     st.pop();
+
     if (!visited[node]) {
-      record.push_back(node);
       visited[node] = true;
+
+      record.push_back(node);
+
       for (const auto& neighbor : adj_list[node]) {
-        if (!visited[neighbor]) {
-          st.push(neighbor);
-        }
+        if (!visited[neighbor]) st.push(neighbor);
       }
     }
   }
@@ -99,20 +101,25 @@ void dfs(int n, std::vector<int> adj_list[]) {
 // ======================================================
 void dfs_r(int n, std::vector<std::vector<int>>& adj_mat) {
   std::vector<int> record;
-  std::vector<bool> visited(n, false);
 
   // ======================================================
+  std::vector<bool> visited(n, false);
+
   std::function<void(int)> dfs = [&](int node) {
-    if (visited[node]) return;
     visited[node] = true;
+
     record.push_back(node);
+
     for (int i = 0; i < n; ++i) {
-      if (adj_mat[node][i] && !visited[i]) {
-        dfs(i);
-      }
+      if (adj_mat[node][i] && !visited[i]) dfs(i);
     }
   };
 
+  // normally, you can just call
+  // dfs(0);
+
+  // but our test case includes disconnected graphs,
+  // so we need to call dfs for each unvisited node.
   for (int i = 0; i < n; ++i) {
     if (!visited[i]) {
       dfs(i);
@@ -136,20 +143,26 @@ void dfs_r(int n, std::vector<std::vector<int>>& adj_mat) {
 // ======================================================
 void dfs_r(int n, std::vector<int> adj_list[]) {
   std::vector<int> record;
-  std::vector<bool> visited(n, false);
 
   // ======================================================
+  std::vector<bool> visited(n, false);
+
   std::function<void(int)> dfs = [&](int node) {
-    if (visited[node]) return;
     visited[node] = true;
+
     record.push_back(node);
-    for (const auto& neighbor : adj_list[node]) {
-      if (!visited[neighbor]) {
-        dfs(neighbor);
-      }
+
+    for (const auto& nbr : adj_list[node]) {
+      if (!visited[nbr]) dfs(nbr);
     }
+
   };
 
+  // normally, you can just call
+  // dfs(0);
+
+  // but our test case includes disconnected graphs,
+  // so we need to call dfs for each unvisited node.
   for (int i = 0; i < n; ++i) {
     if (!visited[i]) {
       dfs(i);
