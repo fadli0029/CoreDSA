@@ -1,5 +1,5 @@
 /* ====================================================================================
-   This file contains implementations of the Dijkstra's algorithm using a priority
+   This file contains the implementation of the Dijkstra's algorithm using a priority
    queue. It returns the shortest distance from the starting node to all other nodes.
 
    @param n: the number of vertices in the graph
