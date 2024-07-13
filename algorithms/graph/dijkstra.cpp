@@ -5,6 +5,7 @@
    @param n: the number of vertices in the graph
    @param g: the adjacency list representation of the graph
    @param s: the starting node
+   @return vector<int>: the shortest distance from the starting node to all other nodes
 
    @author: Muhammad Fadli Alim Arsani
 =====================================================================================*/

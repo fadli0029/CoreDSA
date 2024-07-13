@@ -26,3 +26,9 @@ add_executable(dijkstra_exe graph/dijkstra.cpp)
 target_include_directories(dijkstra_exe PUBLIC ${Catch2_INCLUDE_DIRS})
 target_link_libraries(dijkstra_exe Catch2::Catch2WithMain)
 add_test(NAME DijkstraTest COMMAND dijkstra_exe)
+
+# Add bellman-ford
+add_executable(bellman_ford_exe graph/bellman_ford.cpp)
+target_include_directories(bellman_ford_exe PUBLIC ${Catch2_INCLUDE_DIRS})
+target_link_libraries(bellman_ford_exe Catch2::Catch2WithMain)
+add_test(NAME BellmanFordTest COMMAND bellman_ford_exe)
