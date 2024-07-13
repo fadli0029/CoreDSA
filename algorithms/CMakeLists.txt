@@ -20,3 +20,9 @@ add_executable(bfs_exe graph/bfs.cpp)
 target_include_directories(bfs_exe PUBLIC ${Catch2_INCLUDE_DIRS})
 target_link_libraries(bfs_exe Catch2::Catch2WithMain)
 add_test(NAME BFSTest COMMAND bfs_exe)
+
+# Add dijkstra
+add_executable(dijkstra_exe graph/dijkstra.cpp)
+target_include_directories(dijkstra_exe PUBLIC ${Catch2_INCLUDE_DIRS})
+target_link_libraries(dijkstra_exe Catch2::Catch2WithMain)
+add_test(NAME DijkstraTest COMMAND dijkstra_exe)
