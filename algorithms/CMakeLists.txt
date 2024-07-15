@@ -38,3 +38,9 @@ add_executable(quick_sort_exe sorting/quick_sort.cpp)
 target_include_directories(quick_sort_exe PUBLIC ${Catch2_INCLUDE_DIRS})
 target_link_libraries(quick_sort_exe Catch2::Catch2WithMain)
 add_test(NAME QuickSortTest COMMAND quick_sort_exe)
+
+# Add quickselect
+add_executable(quick_select_exe sorting/quick_select.cpp)
+target_include_directories(quick_select_exe PUBLIC ${Catch2_INCLUDE_DIRS})
+target_link_libraries(quick_select_exe Catch2::Catch2WithMain)
+add_test(NAME QuickSelectTest COMMAND quick_select_exe)
