@@ -45,6 +45,14 @@ int quick_select(vector<int>& arr, int k) {
   }
 }
 
+int find_kth_smallest(std::vector<int>& arr, int k) {
+  return quick_select(arr, k);
+}
+
+int find_kth_largest(std::vector<int>& arr, int k) {
+  return quick_select(arr, arr.size() - k);
+}
+
 TEST_CASE("Partition function", "[partition]") {
     vector<int> arr = {3, 2, 1, 5, 4};
     int pivot = partition(arr);
