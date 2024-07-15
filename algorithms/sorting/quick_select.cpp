@@ -4,58 +4,44 @@
 #include "bits/stdc++.h"
 using namespace std;
 
-int partition(vector<int>& arr) {
-  int n = arr.size();
-  int lp = 0, rp = n - 1;
+int partition(vector<int>& arr, int left, int right) {
+    // Uses Lomuto partition scheme
+    int pivot = arr[right];
+    int i = left;
 
-  while (lp!=rp) {
-    if (arr[rp] >= arr[lp]) {
-      rp--;
+    for (int j = left; j < right; ++j) {
+        if (arr[j] <= pivot) {
+            swap(arr[i], arr[j]);
+            i++;
+        }
     }
-
-    else if (arr[lp+1] <= arr[lp]) {
-      swap(arr[lp+1], arr[lp]);
-      lp++;
-    }
-
-    else {
-      swap(arr[lp+1], arr[rp]);
-    }
-  }
-  return lp; // pivot index
+    swap(arr[i], arr[right]);
+    return i;
 }
 
-int quick_select(vector<int>& arr, int k) {
-  // Find the pivot by placing the first element
-  // in the correct position
-  int pivot = partition(arr);
+int quick_select(vector<int>& arr, int left, int right, int k) {
+    int pivot_index = partition(arr, left, right);
 
-  if (k==pivot) {
-    return arr[pivot];
-  }
-
-  else if (k < pivot) {
-    vector<int> left(arr.begin(), arr.begin()+pivot);
-    return quick_select(left, k);
-  }
-
-  else {
-    vector<int> right(arr.begin()+pivot+1, arr.end());
-    return quick_select(right, k-(pivot+1));
-  }
+    if (k == pivot_index) {
+        return arr[k];
+    } else if (k < pivot_index) {
+        return quick_select(arr, left, pivot_index - 1, k);
+    } else {
+        return quick_select(arr, pivot_index + 1, right, k);
+    }
 }
 
 int find_kth_smallest(std::vector<int>& arr, int k) {
-  return quick_select(arr, k);
+  return quick_select(arr, 0, arr.size()-1, k);
 }
 
 int find_kth_largest(std::vector<int>& arr, int k) {
-  return quick_select(arr, arr.size() - k);
+  return quick_select(arr, 0, arr.size()-1, arr.size() - k);
 }
 
 TEST_CASE("Partition function", "[partition]") {
     vector<int> arr = {3, 2, 1, 5, 4};
-    int pivot = partition(arr);
+    int pivot = partition(arr, 0, arr.size() - 1);
 
     SECTION("Pivot is within bounds") {
         REQUIRE(pivot >= 0);
@@ -80,14 +66,14 @@ TEST_CASE("Quick Select function", "[quick_select]") {
     int k = 2;
 
     SECTION("Quick select finds the correct kth smallest element") {
-        int result = quick_select(arr, k);
+        int result = quick_select(arr, 0, arr.size() - 1, k);
         vector<int> sorted_arr = arr;
         std::nth_element(sorted_arr.begin(), sorted_arr.begin() + k, sorted_arr.end());
         REQUIRE(result == sorted_arr[k]);
     }
 
     SECTION("Edge cases for quick select") {
-        REQUIRE(quick_select(arr, 0) == *min_element(arr.begin(), arr.end()));
-        REQUIRE(quick_select(arr, arr.size() - 1) == *max_element(arr.begin(), arr.end()));
+        REQUIRE(quick_select(arr, 0, arr.size() - 1, 0) == *min_element(arr.begin(), arr.end()));
+        REQUIRE(quick_select(arr, 0, arr.size() - 1, arr.size() - 1) == *max_element(arr.begin(), arr.end()));
     }
 }
