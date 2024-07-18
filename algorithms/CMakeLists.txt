@@ -44,3 +44,9 @@ add_executable(quick_select_exe sorting/quick_select.cpp)
 target_include_directories(quick_select_exe PUBLIC ${Catch2_INCLUDE_DIRS})
 target_link_libraries(quick_select_exe Catch2::Catch2WithMain)
 add_test(NAME QuickSelectTest COMMAND quick_select_exe)
+
+# Add kahn
+add_executable(kahn_exe graph/kahn.cpp)
+target_include_directories(kahn_exe PUBLIC ${Catch2_INCLUDE_DIRS})
+target_link_libraries(kahn_exe Catch2::Catch2WithMain)
+add_test(NAME KahnTest COMMAND kahn_exe)
