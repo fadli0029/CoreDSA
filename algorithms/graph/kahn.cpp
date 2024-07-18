@@ -1,3 +1,12 @@
+/*
+The advantage of using Kahn's technique besides generating topological sort
+is that it also aids in the discovery of graph cycles. The Kahn's method
+will never allow visiting any node in a cycle. So if you run the algorithm
+on a graph with a cycle, the algorithm will not be able to visit all the
+nodes in the graph. The result will be less than the total number of nodes
+in the graph.
+*/
+
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch_test_macros.hpp>
 
