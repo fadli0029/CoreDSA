@@ -4,22 +4,37 @@
 #include "bits/stdc++.h"
 using namespace std;
 
-int partition(vector<int>& arr, int lp, int rp) {
-  while (lp!=rp) {
-    if (arr[rp] >= arr[lp]) {
-      rp--;
-    }
+// int partition(vector<int>& arr, int lp, int rp) {
+//   while (lp!=rp) {
+//     if (arr[rp] >= arr[lp]) {
+//       rp--;
+//     }
 
-    else if (arr[lp+1] <= arr[lp]) {
-      swap(arr[lp+1], arr[lp]);
-      lp++;
-    }
+//     else if (arr[lp+1] <= arr[lp]) {
+//       swap(arr[lp+1], arr[lp]);
+//       lp++;
+//     }
 
-    else {
-      swap(arr[lp+1], arr[rp]);
+//     else {
+//       swap(arr[lp+1], arr[rp]);
+//     }
+//   }
+//   return lp; // pivot index
+// }
+
+int partition(vector<int>& arr, int left, int right) {
+    // Uses Lomuto partition scheme
+    int pivot = arr[right];
+    int i = left;
+
+    for (int j = left; j < right; ++j) {
+        if (arr[j] <= pivot) {
+            swap(arr[i], arr[j]);
+            i++;
+        }
     }
-  }
-  return lp; // pivot index
+    swap(arr[i], arr[right]);
+    return i;
 }
 
 void quick_sort(vector<int>& arr, int lp, int rp) {
